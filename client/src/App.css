@@ -1,0 +1,99 @@
+body {
+  text-align: center;
+  background-color: rgb(223, 28, 28);
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: pokemonFont;
+  src: url(../public/Pokemon\ Solid.ttf);
+}
+
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: rgb(252, 219, 3);
+  padding: 1rem;
+  border-bottom: 2px solid blue;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.navbar h {
+  display: flex;
+  justify-content: center;
+  margin-right: 40%;
+  font-family: pokemonFont;
+  font-size:x-large;
+}
+
+.navbar a {
+  margin-right: 1%;
+}
+
+.pokemonCards {
+  display: flex;
+  flex-wrap: wrap;
+  width: 75%;
+  margin-left: 5%;
+}
+
+.pokemonCards .singlePokemon {
+  background-color: beige;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 20rem;
+  margin: 1.5rem;
+  padding: 0 15px 0 0;
+  box-shadow: 5px 5px 3px rgba(39, 39, 255, 0.884);
+}
+
+.pageButtons button {
+  font-family: pokemonFont;
+  font-size: small;
+  text-align: center;
+  border-radius: 5px;
+  background: rgb(252, 219, 3);
+  color: rgb(3, 115, 252);
+  margin: 2%;
+  /* margin-bottom: 2%; */
+  padding: 1vh;
+  width: 7%;
+  transition: 0.3s;
+}
+
+.pageButtons button:hover {  
+  color: rgb(252, 219, 3);
+  background: rgb(3, 115, 252);
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  margin: 2% 10% 10%;
+  /* border: 4px dotted black; */
+}
+
+.left-side {
+  /* border: 4px dotted blue; */
+  margin: 0 2% 0 0;  
+  padding: 0 3% 0 0;
+  width: 70%;
+}
+
+.right-side {
+  background: yellow;
+  border-radius: 30px;
+  /* border: 4px dotted green; */
+}
+
+.showMorePokemon {
+  background: beige;
+  margin: 0 10% 0 10%;
+  border-radius: 10%;
+}
