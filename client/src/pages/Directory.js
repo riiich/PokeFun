@@ -12,37 +12,8 @@ export const Directory = () => {
 	const [nextUrl, setNextUrl] = useState(null);
 	const [prevUrl, setPrevUrl] = useState(null);
 	const [allPokemon, setAllPokemon] = useState([]); // holds all the pokemon
-	const [pokemon, setPokemon] = useState("");
-	const [abilities, setAbilities] = useState([]); // returns all the abilities that this pokemon has
-	const [pokemonId, setPokemonId] = useState(null);
-	const [clicked, setClicked] = useState(false);
 	const [loading, setLoading] = useState(true);
 	const [pokemonDetails, setPokemonDetails] = useState(); // holds information of one pokemon
-
-	const buttonClick = () => {
-		if (pokemon === "") {
-			alert("There is no Pokémon to look up!");
-		} else {
-			clicked ? setClicked(false) : setClicked(true);
-			getFlavoredText();
-		}
-	};
-
-	const getFlavoredText = async () => {
-		setLoading(true);
-
-		await axios
-			.get(`${currUrl}/pokemon/${pokemon}`)
-			.then((res) => {
-				setLoading(false);
-				setAbilities(res.data.abilities);
-				setPokemonId(res.data.id);
-				console.log(abilities);
-			})
-			.catch((err) => {
-				console.error(err);
-			});
-	};
 
 	const getAllPokemon = async () => {
 		let cancel;
@@ -56,6 +27,7 @@ export const Directory = () => {
 			.then((res) => {
 				setLoading(false);
 				getPokemon(res.data.results);
+				console.log(pokemonDetails);
 				setPrevUrl(res.data.previous);
 				setNextUrl(res.data.next);
 			})
@@ -86,13 +58,16 @@ export const Directory = () => {
 	};
 
 	const prevPage = () => {
-		// setLoading(true);
+		setLoading(true);
 		setAllPokemon([]);
+		
 		setCurrUrl(prevUrl);
+		if(prevUrl === null){
+			alert("You are currently at the first page!");
+		}
 	};
 
 	useEffect(() => {
-		// setLoading(true);
 		getAllPokemon();
 	}, [currUrl]);
 
@@ -101,33 +76,8 @@ export const Directory = () => {
 	}
 
 	return (
-		<div>
+		<div className="directory">
 			<h1>Directory Page</h1>
-
-			<div className="search-bar">
-				<input
-					type="text"
-					placeholder="Enter a Pokémon"
-					onChange={(event) => {
-						setPokemon(event.target.value);
-					}}
-				/>
-				<button onClick={buttonClick}>Enter</button>
-				{loading ?? <SpinnerDotted color={"rgb(3, 115, 252)"} thickness={"200"} size={70} />}
-			</div>
-
-			{clicked ? (
-				<>
-					<h1>Pokemon: {pokemon}</h1>
-					<p>Pokemon ID: {pokemonId}</p>
-					{abilities.map((skill, i) => (
-						<p key={skill.slot}>{skill.ability.name}</p>
-					))}
-				</>
-			) : (
-				""
-			)}
-
 			<div className="content">
 				{loading ? <SpinnerDotted color={"rgb(3, 115, 252)"} thickness={"200"} size={70} /> : ""}
 
@@ -138,15 +88,17 @@ export const Directory = () => {
 							setPokemonDetails(onePokemon);
 						}}
 					/>
-
-					<Pagination nextUrl={nextUrl} prevUrl={prevUrl} nextPage={nextPage} prevPage={prevPage} />
 				</div>
-
+				
 				{/* show info of specific pokemon that is selected */}
 				<div className="right-side">
-					<PokemonInfo pokeDetails={pokemonDetails} />
+					{ pokemonDetails ? <PokemonInfo pokeDetails={pokemonDetails} /> : <h1>Select a Pokemon to view some details!</h1>}
+					
 				</div>
+
+				
 			</div>
+			<Pagination nextUrl={nextUrl} prevUrl={prevUrl} nextPage={nextPage} prevPage={prevPage} />
 		</div>
 	);
 };

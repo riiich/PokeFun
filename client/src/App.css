@@ -10,9 +10,31 @@ body {
   src: url(../public/Pokemon\ Solid.ttf);
 }
 
+/* the following 3 styles the scrollbar */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(150, 40, 40);
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(rgb(3, 115, 252, 150), rgb(252, 219, 3));
+  border-radius: 10px;
+}
+
 .navbar {
   display: flex;
   justify-content: flex-end;
+  position: sticky;
+  top: 0;
+  z-index: 1; /* Overlapping elements with a larger z-index cover those with a smaller one  */
+  bottom: 0;
   align-items: center;
   background: rgb(252, 219, 3);
   padding: 1rem;
@@ -24,13 +46,22 @@ body {
 .navbar h {
   display: flex;
   justify-content: center;
-  margin-right: 40%;
+  margin-right: 30%;
   font-family: pokemonFont;
-  font-size:x-large;
+  font-size: x-large;
 }
 
 .navbar a {
   margin-right: 1%;
+}
+
+.footer {
+  position: fixed;
+  text-align: center;
+  /* background-color: aliceblue; */
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
 
 .pokemonCards {
@@ -43,14 +74,19 @@ body {
 .pokemonCards .singlePokemon {
   background-color: beige;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  /* box-sizing: border-box; */
   align-items: center;
   border: 1px solid black;
   border-radius: 10px;
-  width: 20rem;
+  width: 300px;
   margin: 1.5rem;
-  padding: 0 15px 0 0;
+  padding: 0 15px 0 15px;
   box-shadow: 5px 5px 3px rgba(39, 39, 255, 0.884);
+}
+
+.pokemonCards .singlePokemon:hover {
+  border-left: 5px yellow solid;
 }
 
 .pageButtons button {
@@ -61,9 +97,8 @@ body {
   background: rgb(252, 219, 3);
   color: rgb(3, 115, 252);
   margin: 2%;
-  /* margin-bottom: 2%; */
   padding: 1vh;
-  width: 7%;
+  width: max-content;
   transition: 0.3s;
 }
 
@@ -72,28 +107,105 @@ body {
   background: rgb(3, 115, 252);
 }
 
+.directory {
+  /* background-image: url("../public/pokeballs.jpg"); */
+  background-size: auto;
+  background-repeat: repeat;
+  height: 100%;
+  /* border: 5px dotted chartreuse; */
+}
+
 .content {
   display: flex;
-  justify-content: center;
-  margin: 2% 10% 10%;
-  /* border: 4px dotted black; */
+  margin: auto;
+  border: 4px dotted black;
+}
+
+.left-side, .right-side {
+  flex-basis: 50%;
 }
 
 .left-side {
+  display: grid;
+  /* grid-template-columns: repeat(4, 500px); */
+  grid-template-columns: repeat(auto-fit, minmax(1500px, 1fr));
+  /* grid-gap: 2rem; */
   /* border: 4px dotted blue; */
-  margin: 0 2% 0 0;  
-  padding: 0 3% 0 0;
-  width: 70%;
+  /* margin: 0;   */
+  /* padding: 0 0 0 10%;  */
+  /* width: 80%; */
 }
 
 .right-side {
+  align-items: center;
+  text-align: center;
   background: yellow;
   border-radius: 30px;
+  max-height: 85vh;
+  max-width: 60%;
+  overflow-y: auto;
+  padding: 0 2% 0 2%;
   /* border: 4px dotted green; */
+  position: sticky;
+  top: 12%;
+  right: 6%;
 }
 
 .showMorePokemon {
+  display: grid;
   background: beige;
-  margin: 0 10% 0 10%;
+  margin: 0 0 5% 10%;
   border-radius: 10%;
+  /* padding: 1% 0 1% 0; */
+  width: 80%;
+}
+
+.home {
+  background-image: url("../public/pokemonMinimal.jpg");
+  background-size: cover;
+  background-repeat: repeat;
+  height: 100vh;
+}
+
+.home-content {
+  display: grid;
+  justify-content: center;
+  margin: 0 10% 0 10%;
+  font-family:'Courier New', Courier, monospace;
+  font-weight:900;
+  font-size: x-large;
+  border: 5px dotted green;
+}
+
+.search-bar input {
+  border-radius: 5px;
+  padding: 0.5%;
+  margin: 1%;
+  font-size: large;
+  /* font-family: pokemonFont; */
+}
+
+.search-bar button {
+  padding: 0.5%;
+  font-size: large;
+  border-radius: 5px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.searched-poke-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: aquamarine;
+  border: 3px dotted blue;
+  padding: 10px;
+  margin: 0 30% 0 30%;
+}
+
+.popular {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 10px;
+  /* border: 3px dotted green; */
 }
