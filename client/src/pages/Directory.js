@@ -27,7 +27,6 @@ export const Directory = () => {
 			.then((res) => {
 				setLoading(false);
 				getPokemon(res.data.results);
-				console.log(pokemonDetails);
 				setPrevUrl(res.data.previous);
 				setNextUrl(res.data.next);
 			})
@@ -93,10 +92,7 @@ export const Directory = () => {
 				{/* show info of specific pokemon that is selected */}
 				<div className="right-side">
 					{ pokemonDetails ? <PokemonInfo pokeDetails={pokemonDetails} /> : <h1>Select a Pokemon to view some details!</h1>}
-					
 				</div>
-
-				
 			</div>
 			<Pagination nextUrl={nextUrl} prevUrl={prevUrl} nextPage={nextPage} prevPage={prevPage} />
 		</div>

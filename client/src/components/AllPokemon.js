@@ -20,7 +20,7 @@ export const AllPokemon = ({ pokeSearch }) => {
     }, [allPokemon]);
 
     return(
-        <div>
+        <div className="all-pokemon-names">
             {allPokemon ? allPokemon.filter((item) => item.name.includes(pokeSearch)).map((pokeName, i) => <p key={i}>{pokeName.name}</p> ): "F"}
         </div>
     );

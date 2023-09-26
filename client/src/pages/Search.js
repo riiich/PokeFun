@@ -14,7 +14,7 @@ export const Search = () => {
 	const [pokemonImg, setPokemonImg] = useState(null);
 	const [allPokemons, setAllPokemons] = useState([]);
 
-    const buttonClick = async () => {
+    const buttonClick = async (e) => {
 		try{
 			if (pokemonName === "") {
 				alert("There is no Pokémon to look up!");
@@ -25,6 +25,7 @@ export const Search = () => {
 			await pokeDetails();
 			await pokeSpecies();
 			await addPokemon();
+			e.target.value = "";
 		}
 		catch(error){
 			console.log(error);
@@ -53,8 +54,8 @@ export const Search = () => {
 				single = [...single, item.name];
 				return single;
 			});
-		})
-	}
+		});
+	};
 
 	// FOR SOME REASON, FETCHING NEEDS TO BE DONE TWICE BEFORE WE ARE ABLE TO GET SOME DATA SUCH AS SPRITE
     const pokeDetails = async () => {
@@ -121,16 +122,14 @@ export const Search = () => {
 	}, []);
 
     return( 
-        <div>
+        <div className="search-page">
             <div className="search-bar">
 				<input
-					type="text"
-					placeholder="Enter a Pokémon"
-					onChange={(event) => {
-						setPokemonName(event.target.value);
-					}}
+					type="search"
+					placeholder="Enter a Pokémon..."
+					onChange={ (e) => { setPokemonName(e.target.value.toLowerCase()) } }
 				/>
-				<button onClick={buttonClick}>Enter</button>
+				<button onClick={(e) => {buttonClick(e)}}>Enter</button>
 
 				{pokemonName ? <AllPokemon pokeSearch={pokemonName} /> : ""}
 				{loading ? <SpinnerDotted color={"rgb(3, 115, 252)"} thickness={"200"} size={70} /> : ""}
@@ -138,13 +137,12 @@ export const Search = () => {
 
 			{pokemon ? (
 				<>
-					<h1>Pokemon: {pokemon.name}</h1>
 					<div className="searched-poke-info">
-						
-						<img src={ pokemon.sprites.front_default } alt="pokemon" width="200" height="200" />
+						<img src={ pokemon.sprites.front_default } alt="pokemon" width="250" height="250" />
 						<div>
+							<h1>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>
 							<p>Pokemon #{ pokemon.id }</p>
-							<p>Base HP: {pokemon.stats[0].base_stat}</p>
+							<p><code><strong>Base HP: </strong></code>{pokemon.stats[0].base_stat}</p>
 							
 							<code><strong>Abilities: </strong></code>
 							{pokemon.abilities.map((skill, i) => (
@@ -156,7 +154,10 @@ export const Search = () => {
 							<p><code><strong>Cool Fact: </strong></code>{ additionalPokeInfo ? additionalPokeInfo.flavor_text_entries[1].flavor_text : "N/A" }</p>
 							{/* <p><code><strong>: </strong></code>{ additionalPokeInfo }</p> */}
 						</div>
-						
+						{pokemon.sprites.versions["generation-v"]["black-white"].animated.front_default 
+							? <img src={ pokemon.sprites.versions["generation-v"]["black-white"].animated.front_default } alt="pokemon" width="125" height="125" /> 
+							: ""
+						}
 					</div>
 				</>
 				

@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const mysql = require('mysql');
 
+// create a connection to the database 
 const db = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -8,6 +9,7 @@ const db = mysql.createConnection({
     database: "pokemon",
 });
 
+// connect to database
 db.connect((err) => {
     if(err) {
         console.log(err);
@@ -19,7 +21,7 @@ db.connect((err) => {
 
 // middleware
 router.use((req, res, next) => {
-    // console.log(req.headers);
+    // console.log(req.headers); 
     
     next();
 });
