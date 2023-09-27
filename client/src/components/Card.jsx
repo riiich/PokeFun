@@ -17,10 +17,11 @@ export const Card = ({ pokemonList, retrievePokemon }) => {
                         </p>
                         <img src={item.sprites.front_default} alt={item.name} width="100" height="100" />
 
-                        <button onClick={() => {showInfo(item)}}>{ !showMoreInfo ? "Show More" : "Show Less" }</button>
+                        <button onClick={() => {showInfo(item)}}>Click Me!</button>
                     </div>
                 ))
             }
         </div>
     );
 }
+// { !showMoreInfo ? "Show More" : "Show Less" }

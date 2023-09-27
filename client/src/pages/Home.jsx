@@ -8,6 +8,10 @@ export const Home = () => {
                     in the navigation bar in the top right.
                 </p>
                 <p>You are also able to search up any existing Pokémon you would like to see some information about your desired Pokémon!</p>
+                <p>Lastly, you are able to view which Pokémon have been most frequently searched by the public by heading over 
+                    to the last link in the navigation bar on the top right.
+                </p>
+                <p>Have Fun!</p>
             </div>
             
         </div>

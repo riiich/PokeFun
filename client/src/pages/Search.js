@@ -4,6 +4,27 @@ import { SpinnerDotted } from "spinners-react";
 import { AllPokemon } from "../components/AllPokemon";
 
 const base_url = "https://pokeapi.co/api/v2/pokemon";
+const hectogramToLb = 0.220462;
+const decimeterToMeter = 0.1;
+const typeColors = {
+    "bug": "#A8B820", 
+    "dark": "#A8B820", 
+    "electric": "#F8D030", 
+    "fairy": "#EE99AC", 
+    "fire": "#F08030", 
+    "flying": "#A890F0", 
+    "ghost": "#705898", 
+    "grass": "#78C850", 
+    "ground": "#E0C068", 
+    "ice": "#98D8D8", 
+    "normal": "#A8A878", 
+    "poison": "#A040A0", 
+    "rock": "#B8A038", 
+    "psychic": "#F85888", 
+    "water": "#6890F0", 
+    "dragon": "#7038F8", 
+    "steel": "#B8B8D0"
+};
 
 export const Search = () => {
     const [loading, setLoading] = useState(false);
@@ -141,12 +162,28 @@ export const Search = () => {
 							<h1>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>
 							<p>Pokemon #{ pokemon.id }</p>
 							<p><code><strong>Base HP: </strong></code>{pokemon.stats[0].base_stat}</p>
-							
+							<p><code><strong>Height: </strong></code>{(pokemon.height * decimeterToMeter).toFixed(2)} m</p>
+							<p><code><strong>Weight: </strong></code>{(pokemon.weight * hectogramToLb).toFixed(2)} lbs</p>
 							<code><strong>Abilities: </strong></code>
 							{pokemon.abilities.map((skill, i) => (
-								<p key={skill.slot}>{skill.ability.name}</p>
+								<p key={skill.slot}>{i+1}. {skill.ability.name}</p>
 							))}
-
+							<h3><code>Type: </code></h3>
+							{ pokemon.types.map((type, i) => (
+                            	<p style={{backgroundColor: `${typeColors[type.type.name]}`, width:"fit-content", 
+                            	           padding:"0 10px 0 10px", margin:"0 30% 10px 42%", alignItems:"center"}}> 
+                            	    {type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1)}
+                            	</p>
+                        	))}
+							<>
+								<h3><code>Base Stats: </code></h3>
+                            	<p>{pokemon.stats[0].stat.name}: {pokemon.stats[0].base_stat}</p>
+                            	<p>{pokemon.stats[1].stat.name}: {pokemon.stats[1].base_stat}</p>
+                            	<p>{pokemon.stats[2].stat.name}: {pokemon.stats[2].base_stat}</p>
+                            	<p>{pokemon.stats[3].stat.name}: {pokemon.stats[3].base_stat}</p>
+                            	<p>{pokemon.stats[4].stat.name}: {pokemon.stats[4].base_stat}</p>
+                            	<p>{pokemon.stats[5].stat.name}: {pokemon.stats[5].base_stat}</p>
+							</>
 							<p><code><strong>Capture rate: </strong></code>{ additionalPokeInfo ? additionalPokeInfo.capture_rate : "N/A" }</p>
 							<p><code><strong>Prestige: </strong></code>{ additionalPokeInfo ? (additionalPokeInfo.is_legendary ? "Is Legendary" : "Not Legendary") : "N/A"}</p>
 							<p><code><strong>Cool Fact: </strong></code>{ additionalPokeInfo ? additionalPokeInfo.flavor_text_entries[1].flavor_text : "N/A" }</p>

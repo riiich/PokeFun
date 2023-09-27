@@ -12,7 +12,7 @@ export const Navbar = () => {
                 <Link to="/">Home</Link>
                 <Link to="/search">Search</Link>
                 <Link to="/directory">Directory</Link>
-                <Link to="/pokemonSearched">🏆 Searched Pokemons</Link>
+                <Link to="/pokemonSearched">🏆 Searched Pokémons</Link>
                 {/* <Link to="/everything">All Pokemons</Link> */}
         </div>
     );
