@@ -9,13 +9,13 @@
 
 select * from Pokemon;
 
--- truncate pokemon;
+-- truncate Pokemon;
 
--- insert into pokemon (name) values('Charmander');
--- insert into pokemon (name) values('Squirtle');
--- insert into pokemon (name) values('Giratina');
--- insert into pokemon (name) values('Rayquaza');
+-- insert into Pokemon (name) values('Charmander');
+-- insert into Pokemon (name) values('Squirtle');
+-- insert into Pokemon (name) values('Giratina');
+-- insert into Pokemon (name) values('Rayquaza');
 
--- update pokemon 
+-- update Pokemon 
 -- set searchCount = searchCount + 1
 -- where name="Charmander";
