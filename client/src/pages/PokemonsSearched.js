@@ -3,7 +3,6 @@ import axios from "axios";
 
 export const PokemonsSearched = () => {
     const [pokemonDataList, setPokemonDataList] = useState([]);
-    const [popularPokemon, setPopularPokemon] = useState({pokemonName: "", pokemonImage: ""});
     const [popularName, setPopularName] = useState("");
     const [popularImg, setPopularImg] = useState("");
 
@@ -45,8 +44,8 @@ export const PokemonsSearched = () => {
             <img src={require("../images/pokeballs.gif")} alt="pokeballGif" />
 
             <div>
-                {popularImg ?? <img src={popularImg} alt="pokemon" width="100" height="100" /> }
-                {popularName ?? <h1>{popularName} is the most searched Pokemon!</h1>}
+                {/* {popularImg ?? <img src={popularImg} alt="pokemon" width="100" height="100" /> } */}
+                {popularName.length > 0 ?? <h1>{popularName} is the most searched Pokemon!</h1>}
             </div>
             
             <div className="popular">   
@@ -56,8 +55,8 @@ export const PokemonsSearched = () => {
 
                 { pokemonDataList.map((pokemon, i) => (
                     <>
-                        {i === 0 ?? <p>{pokemon.image}</p>}
-                        <h2><code className="pokeName">{i+1}. {pokemon.name}</code></h2>
+                        
+                        <h2><code className="pokeName">{i === 0 ? <span>🏆</span> : ""}{i+1}. {pokemon.name}</code></h2>
                         <h2><code className="pokeSearched">{pokemon.searchCount}</code></h2>
                         {/* <p>{pokemon.image}</p> */}
                     </>

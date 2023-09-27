@@ -104,13 +104,11 @@ export const Search = () => {
 					allPokemons: allPokemons,
 				})
 				.then((res) => {
-					console.log(res);
+					console.log(res.data.pokemon);
 				})
 				.catch((err) => {
 					console.log(err);
-					console.log("in error");
 				})
-			console.log("after axios");
 		}
 		catch(error){
 			console.log(error);

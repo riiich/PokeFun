@@ -151,7 +151,7 @@ body {
   text-align: center;
   background: yellow;
   border-radius: 30px;
-  max-height: 70%;
+  max-height: 90vh;
   width: 20vw;
   margin: 0 10% 0 0;
   overflow-y: auto;
@@ -169,6 +169,10 @@ body {
   border-radius: 10%;
   /* padding: 1% 0 1% 0; */
   width: 0 auto 0 auto;
+}
+
+.show-more .base-stats p{
+  font-weight: bold;
 }
 
 .home {
@@ -243,7 +247,7 @@ body {
 .popular {
   display: grid;
   grid-template-columns: repeat(2, 50%);
-  grid-column-gap: 5%;
+  grid-column-gap: 10%;
   max-width: fit-content;
   margin:  1vh 1vw 1vh 3vw;
   /* border: 3px dotted green; */
@@ -262,9 +266,12 @@ body {
 }
 
 .popular .pokeName{
-  /* border-bottom: 2px black solid; */
   margin: 5vh 10vw 5vh 20vw;
   width: 15vw;
+}
+
+.popular .pokeName span{
+  margin-right: 1vw;
 }
 
 .popular .pokeSearched{

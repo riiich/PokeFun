@@ -4,6 +4,7 @@ const port = 3001;
 const cors = require('cors');
 
 app.use(express.json());    //  need this middleware so that express is able to parse json that is passed to server
+app.use(express.json({limit: '50mb'}));
 
 app.use(
     cors({

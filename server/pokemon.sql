@@ -7,7 +7,7 @@
 
 -- drop table pokemon;
 
-select * from pokemon;
+select * from Pokemon;
 
 -- truncate pokemon;
 
