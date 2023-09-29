@@ -22,7 +22,7 @@ app.use('/searchPokemon', searchPokemon);
 
 app.get("/", (req, res) => {
     res.json({
-        msg: "hi"
+        msg: "Welcome to the Pokemon's searched backend!",
     });
 });
 
