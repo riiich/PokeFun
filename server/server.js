@@ -8,7 +8,7 @@ app.use(express.json({limit: '50mb'}));
 
 app.use(
     cors({
-        origin: ["https://poke-fun-six.vercel.app"],
+        origin: ["https://poke-fun-six.vercel.app/"],
         methods: ["GET", "POST", "PUT", "DELETE"],
         credentials: true, // make this true to have allow cookies
     })
@@ -17,7 +17,7 @@ app.use(
 const searchPokemon = require('./routes/pokemonSearch');
 app.use('/searchPokemon', searchPokemon);
 
-app.get("/hi", (req, res) => {
+app.get("/", (req, res) => {
     res.json({
         msg: "hi"
     });
