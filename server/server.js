@@ -12,7 +12,7 @@ app.use(
         methods: ["GET", "POST", "PUT", "DELETE"],
         credentials: true, // make this true to have allow cookies
     })
-);
+); 
 
 const searchPokemon = require('./routes/pokemonSearch');
 app.use('/searchPokemon', searchPokemon);

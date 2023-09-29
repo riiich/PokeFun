@@ -6,6 +6,8 @@ export const PokemonsSearched = () => {
     const [popularName, setPopularName] = useState("");
     const [popularImg, setPopularImg] = useState("");
 
+    axios.defaults.withCredentials = true;
+
     // api call to retrieve added pokemons from the database
 	const pokemonSearchedAmt = async () => {
         // NOT FETCHING DATA BECAUSE WE ARE TRYING TO FETCH FROM AN ENDPOINT ON LOCALHOST
