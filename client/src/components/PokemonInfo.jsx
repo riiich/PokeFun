@@ -44,7 +44,8 @@ export const PokemonInfo = ({ pokeDetails }) => {
                         <h3><code>Weight: </code></h3><p>{ (pokeDetails.weight * hectogramToLb).toFixed(2) } lbs</p>
                         <h3><code>Type: </code></h3>{ pokeDetails.types.map((type, i) => (
                             <p style={{backgroundColor: `${typeColors[type.type.name]}`, width:"fit-content", 
-                                       padding:"0 10px 0 10px", margin:"0 30% 10px 42%", alignItems:"center"}}> 
+                                       padding:"0 10px 0 10px", margin:"0 30% 10px 42%", alignItems:"center",
+                                       borderRadius:"10px"}}> 
                                 {type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1)}
                             </p>
                         )) }

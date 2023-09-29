@@ -6,14 +6,14 @@ export const PokemonsSearched = () => {
     const [popularName, setPopularName] = useState("");
     const [popularImg, setPopularImg] = useState("");
 
-    axios.defaults.withCredentials = true;
+    // axios.defaults.withCredentials = false;
 
     // api call to retrieve added pokemons from the database
 	const pokemonSearchedAmt = async () => {
         // NOT FETCHING DATA BECAUSE WE ARE TRYING TO FETCH FROM AN ENDPOINT ON LOCALHOST
 		await axios
-            .get('https://poke-fun-server.vercel.app/searchPokemon/PokemonList')
-            //.get('http://localhost:3001/searchPokemon/pokemonList')
+            // .get('https://poke-fun-server.vercel.app/searchPokemon/PokemonList')
+            .get('http://localhost:3001/searchPokemon/pokemonList')
 		    .then((res) => {
                 getAllData(res.data.pokemonSearchList);
 		    })

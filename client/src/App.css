@@ -171,6 +171,13 @@ body {
   width: 0 auto 0 auto;
 }
 
+.show-more .showMorePokemon .pokemonType {
+  /* width: fit-content;
+  padding: 0 10px 0 10px;
+  margin: 0 30% 10px 42%;
+  align-items: center;
+  border-radius: 20px; */
+}
 .show-more .base-stats p{
   font-weight: bold;
 }
@@ -218,6 +225,8 @@ body {
   border-radius: 5px;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+
 
 .search-bar button:active{
   color: rgb(252, 219, 3);

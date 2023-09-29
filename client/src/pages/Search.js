@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { SpinnerDotted } from "spinners-react";
 import { AllPokemon } from "../components/AllPokemon";
@@ -34,8 +34,9 @@ export const Search = () => {
     const [clicked, setClicked] = useState(false);
 	const [pokemonImg, setPokemonImg] = useState(null);
 	const [allPokemons, setAllPokemons] = useState([]);
+	let pName = useRef("");
 
-    const buttonClick = async (e) => {
+    const buttonClick = async () => {
 		try{
 			if (pokemonName === "") {
 				alert("There is no Pokémon to look up!");
@@ -46,7 +47,7 @@ export const Search = () => {
 			await pokeDetails();
 			await pokeSpecies();
 			await addPokemon();
-			e.target.value = "";
+			// setPokemonName("");	// need to add this because it make a lot of unnecessary http requests if this is not cleared
 		}
 		catch(error){
 			console.log(error);
@@ -56,7 +57,7 @@ export const Search = () => {
 	// get all the existing pokemon and put it into an array to pass back to the server to do checking
 	const getAllPokemons = async () => {
 		await axios
-			.get(`${base_url}?offset=0&limit=100000000`)
+			.get(`${base_url}?offset=0&limit=1400`)
 			.then((res) => {
 				addToPokemonList(res.data.results);
 			})
@@ -138,17 +139,19 @@ export const Search = () => {
 
 	useEffect(() => {
 		getAllPokemons();
-	}, []);
+		setPokemonName("");
+	}, [pokemon]);
 
     return( 
         <div className="search-page">
             <div className="search-bar">
 				<input
+					ref={pName}
 					type="search"
 					placeholder="Enter a Pokémon..."
-					onChange={ (e) => { setPokemonName(e.target.value.toLowerCase()) } }
+					onChange={ (e) => { setPokemonName(e.target.value.toLowerCase()); } }
 				/>
-				<button onClick={(e) => {buttonClick(e)}}>Enter</button>
+				<button onClick={buttonClick}>Enter</button>
 
 				{pokemonName ? <AllPokemon pokeSearch={pokemonName} /> : ""}
 				{loading ? <SpinnerDotted color={"rgb(3, 115, 252)"} thickness={"200"} size={70} /> : ""}
@@ -171,7 +174,8 @@ export const Search = () => {
 							<h3><code>Type: </code></h3>
 							{ pokemon.types.map((type, i) => (
                             	<p style={{backgroundColor: `${typeColors[type.type.name]}`, width:"fit-content", 
-                            	           padding:"0 10px 0 10px", margin:"0 30% 10px 42%", alignItems:"center"}}> 
+                            	           padding:"0 10px 0 10px", margin:"0 30% 10px 42%", alignItems:"center",
+										   borderRadius:"20px"}}> 
                             	    {type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1)}
                             	</p>
                         	))}
