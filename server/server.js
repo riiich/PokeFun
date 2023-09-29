@@ -7,7 +7,8 @@ app.use(express.json());    //  need this middleware so that express is able to 
 
 app.use(
     cors({
-        origin: ["http://localhost:3000"],
+        origin: "*",
+        // origin: ["http://localhost:3000"],
         methods: ["GET", "POST", "PUT", "DELETE"],
         // credentials: true, // make this true to have allow cookies
     })
