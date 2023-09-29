@@ -10,7 +10,8 @@ export const PokemonsSearched = () => {
 	const pokemonSearchedAmt = async () => {
         // NOT FETCHING DATA BECAUSE WE ARE TRYING TO FETCH FROM AN ENDPOINT ON LOCALHOST
 		await axios
-            .get('http://localhost:3001/searchPokemon/pokemonList')
+            .get('poke-fun-server-feskmqupb-riiich.vercel.app/searchPokemon/PokemonList')
+            //.get('http://localhost:3001/searchPokemon/pokemonList')
 		    .then((res) => {
                 getAllData(res.data.pokemonSearchList);
 		    })
