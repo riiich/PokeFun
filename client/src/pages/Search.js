@@ -140,7 +140,7 @@ export const Search = () => {
 	useEffect(() => {
 		getAllPokemons();
 		setPokemonName("");
-	}, [pokemon]);
+	}, []);
 
     return( 
         <div className="search-page">
