@@ -212,11 +212,11 @@ body {
 .home-content {
   display: grid;
   justify-content: center;
-  margin: 0 10% 0 10%;
+  margin: 20px 10% 0 10%;
   font-family:'Courier New', Courier, monospace;
   font-weight:900;
   font-size: x-large;
-  border: 5px dotted green;
+  color: blue;
 }
 
 .search-page {
