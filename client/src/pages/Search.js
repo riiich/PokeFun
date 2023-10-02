@@ -120,7 +120,7 @@ export const Search = () => {
 	const addPokemon = async () => {
 		try{
 			await axios
-				.post('http://localhost:3001/searchPokemon/pokemonList', {
+				.post('https://poke-fun-server.vercel.app/searchPokemon/PokemonList', {
 					pokemonName: pokemonName,
 					pokemonImg: pokemonImg,
 					allPokemons: allPokemons,

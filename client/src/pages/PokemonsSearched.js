@@ -10,10 +10,8 @@ export const PokemonsSearched = () => {
 
     // api call to retrieve added pokemons from the database
 	const pokemonSearchedAmt = async () => {
-        // NOT FETCHING DATA BECAUSE WE ARE TRYING TO FETCH FROM AN ENDPOINT ON LOCALHOST
 		await axios
-            // .get('https://poke-fun-server.vercel.app/searchPokemon/PokemonList')
-            .get('http://localhost:3001/searchPokemon/pokemonList')
+            .get('https://poke-fun-server.vercel.app/searchPokemon/PokemonList')
 		    .then((res) => {
                 getAllData(res.data.pokemonSearchList);
 		    })
