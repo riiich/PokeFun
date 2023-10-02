@@ -76,7 +76,11 @@ export const Directory = () => {
 
 	return (
 		<div className="directory">
-			<h1>Directory Page</h1>
+			<div className="directory-title">
+				<img src={require("../images/pokedex.gif")} alt="pokedex" width="150" height="100" />
+				<h1 >Pokémon Directory</h1>
+			</div>
+			
 			<div className="content">
 				{loading ? <SpinnerDotted color={"rgb(3, 115, 252)"} thickness={"200"} size={70} /> : ""}
 
@@ -91,7 +95,7 @@ export const Directory = () => {
 				
 				{/* show info of specific pokemon that is selected */}
 				<div className="right-side">
-					{ pokemonDetails ? <PokemonInfo pokeDetails={pokemonDetails} /> : <h1>Select a Pokemon to view some details!</h1>}
+					{ pokemonDetails ? <PokemonInfo pokeDetails={pokemonDetails} /> : <h1>Select a Pokémon to view some details!</h1>}
 				</div>
 			</div>
 			<Pagination nextUrl={nextUrl} prevUrl={prevUrl} nextPage={nextPage} prevPage={prevPage} />

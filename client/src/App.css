@@ -9,8 +9,13 @@ body {
 }
 
 @font-face {
-  font-family: pokemonFont;
+  font-family: pokemonFont1;
   src: url(../public/Pokemon\ Solid.ttf);
+}
+
+@font-face {
+  font-family: pokemonFont2;
+  src: url(../public/PocketMonk.otf);
 }
 
 /* the following 3 styles the scrollbar */
@@ -54,10 +59,10 @@ body {
 
 .navbar .navLogo {
   display: flex;
-  justify-content: center;
+  justify-content:flex-start;
   align-items: center;
   margin: 0 20vw 0 20vw;
-  font-family: pokemonFont;
+  font-family: pokemonFont1;
   font-size: x-large;
 }
 
@@ -127,6 +132,20 @@ body {
   background-repeat: repeat;
   height: 100%;
   /* border: 5px dotted chartreuse; */
+}
+
+.directory .directory-title {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-family: pokemonFont2;
+  /* font-family: pokemonFont; */
+  color: rgb(5, 91, 197);
+  font-stretch:extra-expanded;
+}
+
+.directory-title img {
+  margin: 10px 20px 0 0;
 }
 
 .directory .content {
