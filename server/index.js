@@ -16,7 +16,7 @@ app.use(
     })
 );
 
-const searchPokemon = require('./api/pokemonSearch');
+const searchPokemon = require('./routes/pokemonSearch');
 app.use('/searchPokemon', searchPokemon);
 
 app.get("/", (req, res) => {
