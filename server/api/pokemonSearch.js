@@ -30,6 +30,13 @@ router.use((req, res, next) => {
     next();
 });
 
+router.get('/', (req, res) => {
+    res.json({
+        status: 200,
+        message: "This is the endpoint route to retrieve some data!",
+    })
+});
+
 // get the list of amount of times a pokemon has been searched
 router.get('/pokemonList', async (req, res) => {
     const allPokemonQuery = "SELECT * FROM Pokemon";

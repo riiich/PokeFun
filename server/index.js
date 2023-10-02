@@ -10,7 +10,6 @@ app.use(express.urlencoded({limit: '50mb'}));
 app.use(
     cors({
         origin: "*",
-        // origin: ["http://localhost:3000"],
         // origin: ["https://poke-fun-six.vercel.app/"],
         methods: ["GET", "POST", "PUT", "DELETE"],
         credentials: true, // make this true to have allow cookies
